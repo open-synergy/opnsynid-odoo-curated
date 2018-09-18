@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<odoo>
+<openerp>
+<data>
     <record model="ir.ui.view" id="view_hidden_template_form">
         <field name="name">hidden.template.form</field>
         <field name="model">hidden.template</field>
@@ -63,5 +64,5 @@
 
     <menuitem id="menu_hidden_fields_view" action="action_hidden_fields_form"
         parent="base.next_id_9"/>
-
-</odoo>
+</data>
+</openerp>

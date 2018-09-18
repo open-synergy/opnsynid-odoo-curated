@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 # Copyright 2017 Ignacio Ibeas <ignacio@acysos.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
-from odoo import api, models
-from odoo.osv import orm
+from openerp import api, models
+from openerp.osv import orm
 import json
 
 
@@ -34,7 +34,7 @@ class IrUiView(models.Model):
         if 'required' in modifiers and modifiers['required']:
             return True
         check_xml = 'record.' + node.get('name') + '.raw_value'
-        if self.search([('arch_db', 'ilike', check_xml)]):
+        if self.search([('arch', 'ilike', check_xml)]):
             return True
         return False
 
