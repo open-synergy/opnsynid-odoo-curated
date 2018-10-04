@@ -45,10 +45,6 @@ class IrUiView(models.Model):
         if node.tag == 'field':
             if self._check_hidden_field(model, node.get('name')):
                 modifiers = json.loads(node.get('modifiers'))
-                if self._check_safe_mode(node):
-                    modifiers['invisible'] = True
-                    orm.transfer_modifiers_to_node(modifiers, node)
-                else:
-                    node.getparent().remove(node)
-                    fields.pop(node.get('name'), None)
+                modifiers['invisible'] = True
+                orm.transfer_modifiers_to_node(modifiers, node)
         return fields
