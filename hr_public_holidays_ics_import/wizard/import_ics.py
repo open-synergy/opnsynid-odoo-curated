@@ -10,13 +10,15 @@ _logger = logging.getLogger(__name__)
 try:
     from icalendar import Calendar
 except ImportError:
-    _logger.debug('icalendar library missing. Install it via "pip install icalendar"')
+    _logger.debug(
+        'icalendar library missing. Install it via "pip install icalendar"')
 
 
 class HrPublicHolidaysImportIcs(models.TransientModel):
     _name = "hr_public_holidays.import_ics_wizard"
 
-    ics_file = fields.Binary(string='Selected file', filters="*.ics", required=True)
+    ics_file = fields.Binary(string='Selected file',
+                             filters="*.ics", required=True)
     ics_file_name = fields.Char()
 
     @api.multi
@@ -29,11 +31,22 @@ class HrPublicHolidaysImportIcs(models.TransientModel):
             day_count = (dtend - dtstart).days
             if day_count > 1:
                 for dt in (dtstart + timedelta(n) for n in range(day_count)):
-                    lines.extend([(0, 0, {'name': event.get('summary'), 'date': dt.strftime(DF)})])
+                    extra = {
+                        'name': event.get('summary'),
+                        'date': dt.strftime(DF),
+                        }
+                    lines.extend(
+                        [(0, 0, extra)])
             else:
-                lines.extend([(0, 0, {'name': event.get('summary'), 'date': dtstart.strftime(DF)})])
+                extra = {
+                    'name': event.get('summary'),
+                    'date': dtstart.strftime(DF),
+                    }
+                lines.extend(
+                    [(0, 0, extra)])
         if lines:
-            holidays = self.env['hr.holidays.public'].browse(self._context.get('active_id', []))
+            holidays = self.env['hr.holidays.public'].browse(
+                self._context.get('active_id', []))
             holidays.write({'line_ids': lines})
 
     @api.onchange('ics_file_name')
