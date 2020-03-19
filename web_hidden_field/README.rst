@@ -23,11 +23,11 @@ Usage
 =====
 
 Go to Configuration -> Hidden Fields -> Hidden Fields.
-Create a new template and select the model and the fields that you want to 
-hide. 
+Create a new template and select the model and the fields that you want to
+hide.
 If you don't select any user or group, the field is hidden for all users. If
-you select any user the field is hidden for these users. If you select any 
-group the field is hidden for these groups. The user is more restrictive that 
+you select any user the field is hidden for these users. If you select any
+group the field is hidden for these groups. The user is more restrictive that
 the group.
 If the field isn't required, it is removed from view. If it's required the
 field is invisible.
@@ -54,6 +54,7 @@ Contributors
 ------------
 
 * Ignacio Ibeas - Acysos S.L. <ignacio@acysos.com>
+* OpenSynergy Indonesia <openerp@opensynergy-indonesia.com>
 
 
 Maintainer

@@ -20,7 +20,7 @@
                         <field name="name"/>
                         <field name="active"/>
                         <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"/>
-                        <field name="hidden_fields" context="{'template_id':parent.get('name')}">
+                        <field name="hidden_fields">
                            <tree string="Hidden Fields" editable="bottom">
                                <field name="name" domain="[('model_id', '=', model)]"/>
                                <field name="users" widget="many2many_tags"/>
